@@ -1,0 +1,86 @@
+public abstract class Bentuk {
+    private String warna;
+
+    public void setWarna(String warna) {
+        this.warna = warna;
+    }
+
+    public String getWarna() {
+        return warna;
+    }
+
+    public abstract double hitungLuas();
+
+    public abstract double hitungKeliling();
+}
+
+public class PersegiPanjang extends Bentuk {
+    private double panjang;
+    private double lebar;
+
+    public void setPanjang(double panjang) {
+        this.panjang = panjang;
+    }
+
+    public void setLebar(double lebar) {
+        this.lebar = lebar;
+    }
+
+    public double getPanjang() {
+        return panjang;
+    }
+
+    public double getLebar() {
+        return lebar;
+    }
+
+    @Override
+    public double hitungLuas() {
+        return panjang * lebar;
+    }
+
+    @Override
+    public double hitungKeliling() {
+        return 2 * (panjang + lebar);
+    }
+}
+
+public class Lingkaran extends Bentuk {
+    private double jariJari;
+
+    public void setJariJari(double jariJari) {
+        this.jariJari = jariJari;
+    }
+
+    public double getJariJari() {
+        return jariJari;
+    }
+
+    @Override
+    public double hitungLuas() {
+        return Math.PI * jariJari * jariJari;
+    }
+
+    @Override
+    public double hitungKeliling() {
+        return 2 * Math.PI * jariJari;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PersegiPanjang persegiPanjang = new PersegiPanjang();
+        persegiPanjang.setWarna("Biru");
+        persegiPanjang.setPanjang(5.0);
+        persegiPanjang.setLebar(3.0);
+
+        Lingkaran lingkaran = new Lingkaran();
+        lingkaran.setWarna("Merah");
+        lingkaran.setJariJari(2.5);
+
+        System.out.println("Luas Persegi Panjang: " + persegiPanjang.hitungLuas());
+        System.out.println("Keliling Persegi Panjang: " + persegiPanjang.hitungKeliling());
+        System.out.println("Luas Lingkaran: " + lingkaran.hitungLuas());
+        System.out.println("Keliling Lingkaran: " + lingkaran.hitungKeliling());
+    }
+}
